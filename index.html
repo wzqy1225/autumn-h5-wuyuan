@@ -116,7 +116,7 @@ img { display: block; max-width: 100%; }
   height: 100vh;
   min-height: 640px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
 }
@@ -132,56 +132,92 @@ img { display: block; max-width: 100%; }
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(180deg,
-    rgba(23,17,12,0.35) 0%,
-    rgba(23,17,12,0.18) 38%,
-    rgba(23,17,12,0.38) 68%,
-    rgba(23,17,12,0.72) 100%);
+    rgba(250,247,238,0) 55%,
+    rgba(250,247,238,0.4) 82%,
+    var(--rice-paper-light) 100%);
 }
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  color: #fff;
+  color: var(--ink-dark);
   width: 100%;
   padding: 0 1.5rem;
+  margin-top: 12vh;
 }
 .hero-year {
   font-size: 0.95rem;
-  letter-spacing: 0.3em;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 1.8rem;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: var(--autumn-red);
+  font-weight: bold;
+  margin-bottom: 1.6rem;
   opacity: 0;
   animation: fadeUp 1s ease 0.3s forwards;
 }
 .hero-main {
   font-family: var(--serif);
-  font-size: 2.2rem;
-  letter-spacing: 0.12em;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 1.2rem;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  font-size: 2.7rem;
+  letter-spacing: 0.14em;
+  font-weight: 900;
+  color: var(--ink-dark);
+  margin-bottom: 1.4rem;
   opacity: 0;
   animation: fadeUp 1s ease 0.6s forwards;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 .hero-subtitle {
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.88);
-  margin-bottom: 1.2rem;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+  margin-bottom: 1.1rem;
   opacity: 0;
   animation: fadeUp 1s ease 0.75s forwards;
 }
+.hero-subtitle::before,
+.hero-subtitle::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--autumn-gold);
+}
 .hero-org {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.7);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  color: var(--tile-grey);
   opacity: 0;
   animation: fadeUp 1s ease 0.9s forwards;
+}
+.hero-seal {
+  position: absolute;
+  right: 11%;
+  top: 34vh;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  background: var(--autumn-red);
+  color: #fff;
+  font-family: var(--kai);
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.15em;
+  border-radius: 5px;
+  transform: rotate(-5deg);
+  box-shadow: 0 3px 12px rgba(160,61,49,0.35);
+  opacity: 0;
+  animation: sealStamp 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) 1.3s forwards;
+}
+@keyframes sealStamp {
+  from { opacity: 0; transform: rotate(-5deg) scale(1.8); }
+  to { opacity: 1; transform: rotate(-5deg) scale(1); }
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -196,7 +232,7 @@ img { display: block; max-width: 100%; }
 .scroll-mouse {
   width: 22px;
   height: 36px;
-  border: 1.5px solid rgba(255,255,255,0.6);
+  border: 1.5px solid rgba(58,44,32,0.5);
   border-radius: 12px;
   margin: 0 auto 0.5rem;
   position: relative;
@@ -210,7 +246,7 @@ img { display: block; max-width: 100%; }
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.8);
+  background: rgba(58,44,32,0.7);
   animation: scrollDot 1.8s ease-in-out infinite;
 }
 @keyframes scrollDot {
@@ -221,7 +257,41 @@ img { display: block; max-width: 100%; }
 .scroll-hint-text {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.6);
+  color: rgba(58,44,32,0.55);
+}
+
+/* ==================== 诗页 ==================== */
+.poem-section {
+  text-align: center;
+  padding: 3.2rem 1.5rem 2.8rem;
+  background: var(--rice-paper-light);
+}
+.poem-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.6rem;
+}
+.poem-ornament span {
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--autumn-gold);
+}
+.poem-ornament i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--autumn-gold);
+  transform: rotate(45deg);
+}
+.poem-text {
+  font-family: var(--kai);
+  font-size: 1.18rem;
+  color: var(--ink-soft);
+  line-height: 2.5;
+  letter-spacing: 0.14em;
 }
 
 /* ==================== 通用 section ==================== */
@@ -593,13 +663,14 @@ img { display: block; max-width: 100%; }
   text-align: center;
   padding: 3rem 1.5rem 2rem;
 }
-.footer-poem {
+.footer-ending {
   font-family: var(--kai);
-  font-size: 1rem;
+  font-size: 1.75rem;
   color: var(--autumn-gold-light);
-  line-height: 2.2;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.18em;
+  line-height: 1.6;
+  margin: 0.5rem 0 2rem;
+  text-shadow: 0 2px 16px rgba(184,147,74,0.25);
 }
 .footer-info {
   font-size: 0.72rem;
@@ -609,6 +680,12 @@ img { display: block; max-width: 100%; }
   padding-top: 1.2rem;
 }
 .footer-info .brand { color: var(--autumn-gold); font-size: 0.85rem; margin-bottom: 0.3rem; display: block; }
+.footer-music-credit {
+  margin-top: 1.2rem;
+  font-size: 0.62rem;
+  color: rgba(245,239,224,0.32);
+  letter-spacing: 0.04em;
+}
 
 /* ==================== 温馨提示 ==================== */
 .tips-card {
@@ -764,6 +841,37 @@ img { display: block; max-width: 100%; }
   height: 18px;
   opacity: 0;
 }
+
+/* ==================== 音乐按钮 ==================== */
+.music-btn {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 300;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(250,247,238,0.85);
+  border: 1px solid var(--autumn-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(58,44,32,0.18);
+  transition: opacity 0.3s ease;
+}
+.music-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--autumn-gold);
+}
+.music-btn.playing svg {
+  animation: musicSpin 4s linear infinite;
+}
+.music-btn:not(.playing) {
+  opacity: 0.65;
+}
+@keyframes musicSpin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -789,6 +897,12 @@ img { display: block; max-width: 100%; }
 <!-- 飘落叶子 -->
 <div class="falling-leaves" id="fallingLeaves"></div>
 
+<!-- 背景音乐 -->
+<audio id="bgm" src="./music/bgm.mp3" loop preload="auto"></audio>
+<div class="music-btn" id="musicBtn" title="播放/暂停音乐">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</div>
+
 <div class="container">
 
   <!-- ====== Hero 封面 ====== -->
@@ -796,14 +910,26 @@ img { display: block; max-width: 100%; }
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      
-      <div class="hero-year">金秋·2026</div><h1 class="hero-main" style="font-size: 33px;">高铁载秋意<br>赣地揽风华</h1>
+      <div class="hero-year">金秋·2026</div>
+      <h1 class="hero-main">高铁载秋意<br>赣地揽风华</h1>
       <div class="hero-subtitle">婺源·景德镇两日游行程攻略</div>
       <p class="hero-org">2026年武汉局集团公司职工秋游全面开启！</p>
     </div>
+    <div class="hero-seal">秋游</div>
     <div class="scroll-hint">
       <div class="scroll-mouse"></div>
       <div class="scroll-hint-text">向下滑动</div>
+    </div>
+  </section>
+
+  <!-- ====== 诗页 ====== -->
+  <section class="poem-section">
+    <div class="poem-ornament reveal"><span></span><i></i><span></span></div>
+    <div class="poem-text reveal reveal-delay-1">
+      秋入婺源水墨间，<br>
+      灯火瓷都两日还。<br>
+      莫负金秋好时节，<br>
+      且将山水入行囊。
     </div>
   </section>
 
@@ -1102,14 +1228,8 @@ img { display: block; max-width: 100%; }
       <div class="tips-title">温馨提示</div>
       <div class="tips-content">本次婺源、景德镇两日游全程高铁出行，请各位职工合理安排出行时间，按时抵达集合地点。出行期间注意添减衣物，留意天气变化；游览途中遵守行程安排，注意人身及财物安全，文明游览。如遇问题可随时联系随团工作人员，预祝大家旅途愉快，收获秋日美好！</div>
     </div>
-    <div class="footer-poem">
-      秋入婺源水墨间，<br>
-      灯火瓷都两日还。<br>
-      莫负金秋好时节，<br>
-      且将山水入行囊。
-    </div>
+    <div class="footer-ending reveal">真诚服务，与您同行！</div>
     <div class="footer-info">
-      <span class="brand">真诚服务，与您同行！</span>
       <div class="footer-contact">
         <div class="contact-label">武铁国旅服务热线</div>
         <div class="contact-phones">
@@ -1117,6 +1237,7 @@ img { display: block; max-width: 100%; }
           <a class="contact-phone" href="tel:027-51169095">027-51169095</a>
         </div>
       </div>
+      <div class="footer-music-credit">背景音乐：Ishikari Lore — Kevin MacLeod（CC BY 3.0）</div>
     </div>
   </footer>
 
@@ -1238,6 +1359,35 @@ img { display: block; max-width: 100%; }
     });
   }
   window.addEventListener('scroll', parallaxImgs, { passive: true });
+
+  // ==================== 背景音乐 ====================
+  var bgm = document.getElementById('bgm');
+  var musicBtn = document.getElementById('musicBtn');
+
+  function playBgm() {
+    bgm.play().then(function(){
+      musicBtn.classList.add('playing');
+    }).catch(function(){});
+  }
+
+  function firstInteract(e) {
+    if (musicBtn.contains(e.target)) return;
+    playBgm();
+    document.removeEventListener('touchstart', firstInteract);
+    document.removeEventListener('click', firstInteract);
+  }
+  document.addEventListener('touchstart', firstInteract);
+  document.addEventListener('click', firstInteract);
+
+  musicBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (bgm.paused) {
+      playBgm();
+    } else {
+      bgm.pause();
+      musicBtn.classList.remove('playing');
+    }
+  });
 
   updateNavDots();
 })();
