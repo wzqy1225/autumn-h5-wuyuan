@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1392,7 +1392,27 @@ img { display: block; max-width: 100%; }
   var musicBtn = document.getElementById('musicBtn');
   var bgmStarted = false;
 
+  // Web Audio 音量增益：原曲音量偏低，接增益节点提升音量约 2.5 倍
+  var audioCtx = null, gainNode = null, boosted = false;
+  function ensureBoost() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!audioCtx) {
+        audioCtx = new AC();
+        var src = audioCtx.createMediaElementSource(bgm);
+        gainNode = audioCtx.createGain();
+        gainNode.gain.value = 2.5;
+        src.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        boosted = true;
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+    } catch (e) {}
+  }
+
   function playBgm() {
+    ensureBoost();
     if (bgmStarted && !bgm.paused) return;
     bgm.play().then(function(){
       bgmStarted = true;
