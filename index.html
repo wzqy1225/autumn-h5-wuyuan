@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -193,6 +193,7 @@ img { display: block; max-width: 100%; }
 }
 .hero-main .ch {
   display: inline-block;
+  color: #5c2e1e;
   opacity: 0;
   filter: blur(12px);
   transform: translateY(18px) scale(1.15);
@@ -204,7 +205,7 @@ img { display: block; max-width: 100%; }
   transform: translateY(0) scale(1);
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .hero-main {
+  .hero-main .ch {
     background: linear-gradient(180deg, #4a2e1a 0%, #7a3623 55%, #a03d31 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -216,9 +217,11 @@ img { display: block; max-width: 100%; }
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   letter-spacing: 0.22em;
-  color: var(--ink-soft);
+  color: #4a3524;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(250,247,238,0.95), 0 0 20px rgba(250,247,238,0.7);
   margin-bottom: 1.1rem;
   opacity: 0;
   transform: translateY(16px);
@@ -1264,7 +1267,7 @@ img { display: block; max-width: 100%; }
           <a class="contact-phone" href="tel:027-51169095">027-51169095</a>
         </div>
       </div>
-      <div class="footer-staff">编辑：韦子奇&ensp;&ensp;审核：刘晚霞</div>
+      <div class="footer-staff">编辑：韦子奇<br>审核：刘晚霞</div>
     </div>
   </footer>
 
