@@ -166,6 +166,15 @@ img { display: block; max-width: 100%; }
   animation: fadeUp 1s ease 0.6s forwards;
   line-height: 1.4;
 }
+.hero-subtitle {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 1.2rem;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+  opacity: 0;
+  animation: fadeUp 1s ease 0.75s forwards;
+}
 .hero-org {
   font-size: 0.82rem;
   letter-spacing: 0.18em;
@@ -601,6 +610,92 @@ img { display: block; max-width: 100%; }
 }
 .footer-info .brand { color: var(--autumn-gold); font-size: 0.85rem; margin-bottom: 0.3rem; display: block; }
 
+/* ==================== 温馨提示 ==================== */
+.tips-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.3rem 1.4rem;
+  border-left: 3px solid var(--autumn-gold);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1.8rem;
+  text-align: left;
+}
+.tips-title {
+  font-family: var(--kai);
+  font-size: 1rem;
+  color: var(--autumn-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.tips-title::before { content: '※'; font-size: 0.85rem; }
+.tips-content {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 2;
+  text-align: justify;
+}
+
+/* ==================== 特色美食 ==================== */
+.foods {
+  background: var(--rice-paper-light);
+  padding: 4rem 1.5rem;
+}
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.food-item {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+.food-item:hover { transform: translateY(-4px); }
+.food-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.food-name {
+  font-family: var(--kai);
+  font-size: 0.88rem;
+  color: var(--ink-brown);
+  text-align: center;
+  padding: 0.7rem 0.5rem 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+/* ==================== 页脚联系电话 ==================== */
+.footer-contact {
+  margin-top: 1rem;
+}
+.contact-label {
+  font-size: 0.78rem;
+  color: rgba(245,239,224,0.55);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.7rem;
+}
+.contact-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+.contact-phone {
+  font-family: var(--kai);
+  font-size: 1.05rem;
+  color: var(--autumn-gold-light);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.contact-phone:hover { color: var(--autumn-gold); }
+
 /* ==================== 装饰元素 ==================== */
 .leaf-deco {
   position: absolute;
@@ -701,8 +796,9 @@ img { display: block; max-width: 100%; }
     <div class="hero-overlay"></div>
     <div class="hero-content">
       
-      <div class="hero-year">金秋·2026</div><h1 class="hero-main" style="font-size: 33px;">婺源弦高城·景德镇二日游</h1>
-      <p class="hero-org">武汉局集团公司机关职工秋游</p>
+      <div class="hero-year">金秋·2026</div><h1 class="hero-main" style="font-size: 33px;">高铁载秋意，赣地揽风华</h1>
+      <div class="hero-subtitle">婺源·景德镇两日游行程攻略</div>
+      <p class="hero-org">2026年武汉局集团公司职工秋游全面开启！</p>
     </div>
     <div class="scroll-hint">
       <div class="scroll-mouse"></div>
@@ -743,11 +839,6 @@ img { display: block; max-width: 100%; }
       <div class="route-card-content">
         武汉 <span class="arrow">→</span> 水墨上河 <span class="arrow">→</span> 石门村·月亮湾 <span class="arrow">→</span> 弦高城·西湖凼 <span class="arrow">→</span> 景德镇陶阳里 <span class="arrow">→</span> 武汉
       </div>
-    </div>
-    <div class="dates reveal reveal-delay-3">
-      <span class="date-badge">10月16日</span>
-      <span class="date-badge">10月23日</span>
-      <span class="date-badge">10月30日</span>
     </div>
   </section>
 
@@ -965,8 +1056,59 @@ img { display: block; max-width: 100%; }
     </div>
   </section>
 
+  <!-- ====== 特色美食 ====== -->
+  <section class="foods" id="foods">
+    <div class="section-title reveal">
+      <span class="en">LOCAL DELICACIES</span>
+      <div class="cn">特色美食</div>
+      <div class="ornament"><span></span><i></i><span></span></div>
+    </div>
+    <div class="food-grid">
+      <div class="food-item reveal">
+        <img src="./image/food-mifenzhengrou.jpg" alt="米粉蒸肉" class="food-img">
+        <div class="food-name">米粉蒸肉</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-sanbeiji.jpg" alt="香茅三杯鸡" class="food-img">
+        <div class="food-name">香茅三杯鸡</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-yutou.jpg" alt="有机鱼头炖豆冲" class="food-img">
+        <div class="food-name">有机鱼头炖豆冲</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-niurougeng.jpg" alt="西湖牛肉羹" class="food-img">
+        <div class="food-name">西湖牛肉羹</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-kuzhudoufu.jpg" alt="瑶里苦株豆腐" class="food-img">
+        <div class="food-name">瑶里苦株豆腐</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-fenzhengrou.jpg" alt="粉蒸肉" class="food-img">
+        <div class="food-name">粉蒸肉</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-xiaochaorou.jpg" alt="农家小炒肉" class="food-img">
+        <div class="food-name">农家小炒肉</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-yaxuebao.jpg" alt="酸菜鸭血煲" class="food-img">
+        <div class="food-name">酸菜鸭血煲</div>
+      </div>
+      <div class="food-item reveal">
+        <img src="./image/food-jiangxiangya.jpg" alt="一品酱香鸭" class="food-img">
+        <div class="food-name">一品酱香鸭</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== 页脚 ====== -->
   <footer class="footer">
+    <div class="tips-card reveal">
+      <div class="tips-title">温馨提示</div>
+      <div class="tips-content">本次婺源、景德镇两日游全程高铁出行，请各位职工合理安排出行时间，按时抵达集合地点。出行期间注意添减衣物，留意天气变化；游览途中遵守行程安排，注意人身及财物安全，文明游览。如遇问题可随时联系随团工作人员，预祝大家旅途愉快，收获秋日美好！</div>
+    </div>
     <div class="footer-poem">
       秋入婺源水墨间，<br>
       灯火瓷都两日还。<br>
@@ -975,8 +1117,13 @@ img { display: block; max-width: 100%; }
     </div>
     <div class="footer-info">
       <span class="brand">真诚服务，与您同行！</span>
-      出发日期：2026年10月16日 / 23日 / 30日<br>
-      线路：婺源弦高城 — 景德镇二日游
+      <div class="footer-contact">
+        <div class="contact-label">武铁国旅服务热线</div>
+        <div class="contact-phones">
+          <a class="contact-phone" href="tel:027-88040915">027-88040915</a>
+          <a class="contact-phone" href="tel:027-51169095">027-51169095</a>
+        </div>
+      </div>
     </div>
   </footer>
 
