@@ -162,11 +162,19 @@ img { display: block; max-width: 100%; }
   font-size: 2.7rem;
   letter-spacing: 0.14em;
   font-weight: 900;
-  color: var(--ink-dark);
+  color: #5c2e1e;
   margin-bottom: 1.4rem;
   opacity: 0;
   animation: fadeUp 1s ease 0.6s forwards;
   line-height: 1.5;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-main {
+    background: linear-gradient(180deg, #4a2e1a 0%, #7a3623 55%, #a03d31 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 .hero-subtitle {
   display: flex;
@@ -195,31 +203,7 @@ img { display: block; max-width: 100%; }
   animation: fadeUp 1s ease 0.9s forwards;
 }
 .hero-seal {
-  position: absolute;
-  right: 11%;
-  top: 34vh;
-  z-index: 2;
-  width: 46px;
-  height: 46px;
-  background: var(--autumn-red);
-  color: #fff;
-  font-family: var(--kai);
-  font-size: 1.25rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  writing-mode: vertical-rl;
-  letter-spacing: 0.15em;
-  border-radius: 5px;
-  transform: rotate(-5deg);
-  box-shadow: 0 3px 12px rgba(160,61,49,0.35);
-  opacity: 0;
-  animation: sealStamp 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) 1.3s forwards;
-}
-@keyframes sealStamp {
-  from { opacity: 0; transform: rotate(-5deg) scale(1.8); }
-  to { opacity: 1; transform: rotate(-5deg) scale(1); }
+  display: none;
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -919,7 +903,6 @@ img { display: block; max-width: 100%; }
       <div class="hero-subtitle">婺源·景德镇两日游行程攻略</div>
       <p class="hero-org">2026年武汉局集团公司职工秋游全面开启！</p>
     </div>
-    <div class="hero-seal">秋游</div>
     <div class="scroll-hint">
       <div class="scroll-mouse"></div>
       <div class="scroll-hint-text">向下滑动</div>
@@ -1367,25 +1350,39 @@ img { display: block; max-width: 100%; }
   // ==================== 背景音乐 ====================
   var bgm = document.getElementById('bgm');
   var musicBtn = document.getElementById('musicBtn');
+  var bgmStarted = false;
 
   function playBgm() {
+    if (bgmStarted && !bgm.paused) return;
     bgm.play().then(function(){
+      bgmStarted = true;
       musicBtn.classList.add('playing');
+      document.removeEventListener('touchstart', firstInteract);
+      document.removeEventListener('click', firstInteract);
+      document.removeEventListener('scroll', firstInteract);
     }).catch(function(){});
   }
 
   function firstInteract(e) {
-    if (musicBtn.contains(e.target)) return;
+    if (e && musicBtn.contains(e.target)) return;
     playBgm();
-    document.removeEventListener('touchstart', firstInteract);
-    document.removeEventListener('click', firstInteract);
   }
+
+  // 1) 页面加载完成后立即尝试自动播放
+  window.addEventListener('load', function(){
+    setTimeout(playBgm, 2200);
+  });
+  // 2) 微信内置浏览器专用接口
+  document.addEventListener('WeixinJSBridgeReady', playBgm, false);
+  // 3) 平台限制时的兜底：首次触碰/滑动/点击即播放
   document.addEventListener('touchstart', firstInteract);
   document.addEventListener('click', firstInteract);
+  window.addEventListener('scroll', firstInteract, { passive: true });
 
   musicBtn.addEventListener('click', function(e){
     e.stopPropagation();
     if (bgm.paused) {
+      bgmStarted = false;
       playBgm();
     } else {
       bgm.pause();
