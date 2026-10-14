@@ -1,4 +1,4 @@
-﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -147,15 +147,40 @@ img { display: block; max-width: 100%; }
   padding: 0 1.5rem;
   margin-top: 12vh;
 }
+.hero-content::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 42%;
+  transform: translate(-50%, -50%) scale(0.6);
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(216,189,133,0.5) 0%, rgba(216,189,133,0.15) 45%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-content.show::before {
+  animation: glowIn 2.2s ease 1.5s forwards, glowPulse 7s ease-in-out 3.8s infinite;
+}
+@keyframes glowIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  to { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes glowPulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.95; } }
 .hero-year {
   font-size: 0.95rem;
-  letter-spacing: 0.5em;
-  text-indent: 0.5em;
+  letter-spacing: 1.2em;
+  text-indent: 1.2em;
   color: var(--autumn-red);
   font-weight: bold;
   margin-bottom: 1.6rem;
   opacity: 0;
-  animation: fadeUp 1s ease 0.3s forwards;
+  transition: opacity 0.9s ease 0.05s, letter-spacing 1.1s cubic-bezier(0.2,0.7,0.3,1) 0.05s, text-indent 1.1s cubic-bezier(0.2,0.7,0.3,1) 0.05s;
+}
+.hero-content.show .hero-year {
+  opacity: 1;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
 }
 .hero-main {
   font-family: var(--serif);
@@ -164,9 +189,19 @@ img { display: block; max-width: 100%; }
   font-weight: 900;
   color: #5c2e1e;
   margin-bottom: 1.4rem;
-  opacity: 0;
-  animation: fadeUp 1s ease 0.6s forwards;
   line-height: 1.5;
+}
+.hero-main .ch {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(18px) scale(1.15);
+  transition: opacity 0.8s ease, filter 0.8s ease, transform 0.9s cubic-bezier(0.2,0.7,0.25,1);
+}
+.hero-content.show .hero-main .ch {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero-main {
@@ -186,7 +221,8 @@ img { display: block; max-width: 100%; }
   color: var(--ink-soft);
   margin-bottom: 1.1rem;
   opacity: 0;
-  animation: fadeUp 1s ease 0.75s forwards;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease 1.75s, transform 0.8s ease 1.75s;
 }
 .hero-subtitle::before,
 .hero-subtitle::after {
@@ -195,13 +231,16 @@ img { display: block; max-width: 100%; }
   height: 1px;
   background: var(--autumn-gold);
 }
+.hero-content.show .hero-subtitle { opacity: 1; transform: none; }
 .hero-org {
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   color: var(--tile-grey);
   opacity: 0;
-  animation: fadeUp 1s ease 0.9s forwards;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease 2.15s, transform 0.8s ease 2.15s;
 }
+.hero-content.show .hero-org { opacity: 1; transform: none; }
 .hero-seal {
   display: none;
 }
@@ -671,6 +710,7 @@ img { display: block; max-width: 100%; }
   font-size: 0.68rem;
   color: rgba(245,239,224,0.42);
   letter-spacing: 0.08em;
+  text-align: left;
 }
 
 /* ==================== 温馨提示 ==================== */
@@ -894,12 +934,12 @@ img { display: block; max-width: 100%; }
   <!-- ====== Hero 封面 ====== -->
   <section class="hero" id="hero">
     <video class="hero-bg" autoplay muted loop playsinline poster="./image/hero-cover.png">
-      <source src="./video/hero-loop2.mp4" type="video/mp4">
+      <source src="./video/hero-loop3.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-year">金秋·2026</div>
-      <h1 class="hero-main">高铁载秋意<br>赣地揽风华</h1>
+      <h1 class="hero-main"><span class="ch" style="transition-delay:.15s">高</span><span class="ch" style="transition-delay:.26s">铁</span><span class="ch" style="transition-delay:.37s">载</span><span class="ch" style="transition-delay:.48s">秋</span><span class="ch" style="transition-delay:.59s">意</span><br><span class="ch" style="transition-delay:.82s">赣</span><span class="ch" style="transition-delay:.93s">地</span><span class="ch" style="transition-delay:1.04s">揽</span><span class="ch" style="transition-delay:1.15s">风</span><span class="ch" style="transition-delay:1.26s">华</span></h1>
       <div class="hero-subtitle">婺源·景德镇两日游行程攻略</div>
       <p class="hero-org">2026年武汉局集团公司职工秋游全面开启！</p>
     </div>
@@ -932,7 +972,7 @@ img { display: block; max-width: 100%; }
       粉墙黛瓦间，是徽州千年的<span class="accent">水墨气韵</span>；<br>
       青石板巷里，是晒秋人家的<span class="accent">烟火温度</span>。<br>
       两日行程，从婺源到景德镇，<br>
-      在秋天最美的时节，赴一场山水与人文的约会。
+      赴一场山水与人文之约。
     </p>
     <div class="stats reveal reveal-delay-2">
       <div class="stat-item">
@@ -1238,6 +1278,7 @@ img { display: block; max-width: 100%; }
   window.addEventListener('load', function(){
     setTimeout(function(){
       document.getElementById('loader').classList.add('hide');
+      document.querySelector('.hero-content').classList.add('show');
     }, 2000);
   });
 
