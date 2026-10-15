@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -236,9 +236,11 @@ img { display: block; max-width: 100%; }
 }
 .hero-content.show .hero-subtitle { opacity: 1; transform: none; }
 .hero-org {
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-  color: var(--tile-grey);
+  font-size: 0.88rem;
+  letter-spacing: 0.14em;
+  color: #4a3524;
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(250,247,238,0.98), 0 0 24px rgba(250,247,238,0.75);
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.8s ease 2.15s, transform 0.8s ease 2.15s;
@@ -925,7 +927,7 @@ img { display: block; max-width: 100%; }
 <div class="falling-leaves" id="fallingLeaves"></div>
 
 <!-- 背景音乐 -->
-<audio id="bgm" src="./music/bgm3.mp3" loop preload="auto"></audio>
+<audio id="bgm" src="./music/bgm4.mp3" loop preload="auto"></audio>
 <div class="music-btn" id="musicBtn" title="播放/暂停音乐">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
 </div>
@@ -1392,7 +1394,7 @@ img { display: block; max-width: 100%; }
   var musicBtn = document.getElementById('musicBtn');
   var bgmStarted = false;
 
-  // Web Audio 音量增益：原曲音量偏低，接增益节点提升音量约 2.5 倍
+  // Web Audio 音量增益：新曲低音更足，增益设为 1.0 避免削波
   var audioCtx = null, gainNode = null, boosted = false;
   function ensureBoost() {
     try {
@@ -1402,7 +1404,7 @@ img { display: block; max-width: 100%; }
         audioCtx = new AC();
         var src = audioCtx.createMediaElementSource(bgm);
         gainNode = audioCtx.createGain();
-        gainNode.gain.value = 2.5;
+        gainNode.gain.value = 1.0;
         src.connect(gainNode);
         gainNode.connect(audioCtx.destination);
         boosted = true;
