@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -217,38 +217,36 @@ img { display: block; max-width: 100%; }
   }
 }
 .hero-subtitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  font-size: 1.12rem;
-  letter-spacing: 0.22em;
-  color: #4a3524;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(250,247,238,0.95), 0 0 20px rgba(250,247,238,0.7);
-  margin-bottom: 1.1rem;
+  display: none;
+}
+.hero-subtitle-img {
+  display: block;
+  max-width: 82%;
+  height: auto;
+  margin: 0 auto 0.9rem;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.8s ease 1.75s, transform 0.8s ease 1.75s;
 }
+.hero-content.show .hero-subtitle-img { opacity: 1; transform: none; }
 .hero-subtitle::before,
 .hero-subtitle::after {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--autumn-gold);
+  display: none;
 }
 .hero-content.show .hero-subtitle { opacity: 1; transform: none; }
 .hero-org {
-  font-size: 1.02rem;
-  letter-spacing: 0.14em;
-  color: #4a3524;
-  font-weight: 700;
-  text-shadow: 0 0 12px rgba(250,247,238,0.98), 0 0 24px rgba(250,247,238,0.75);
+  display: none;
+}
+.hero-org-img {
+  display: block;
+  max-width: 90%;
+  height: auto;
+  margin: 0 auto;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.8s ease 2.15s, transform 0.8s ease 2.15s;
 }
+.hero-content.show .hero-org-img { opacity: 1; transform: none; }
 .hero-content.show .hero-org { opacity: 1; transform: none; }
 .hero-seal {
   display: none;
@@ -305,7 +303,7 @@ img { display: block; max-width: 100%; }
   font-size: 0.82rem;
   letter-spacing: 0.1em;
   color: #4a3524;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
   text-shadow: 0 0 10px rgba(250,247,238,0.95), 0 0 20px rgba(250,247,238,0.7);
 }
@@ -836,29 +834,27 @@ img { display: block; max-width: 100%; }
   opacity: 0.6;
 }
 .contact-phones {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0 0.3rem;
+  display: none;
 }
 .contact-phone {
-  font-family: var(--kai);
-  font-size: 1.08rem;
-  color: var(--autumn-gold);
-  letter-spacing: 0.04em;
+  display: none;
+}
+.contact-phone:hover { display: none; }
+.hotline-wrap {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 0.3rem 0.4rem;
 }
-.contact-phone:hover { color: var(--autumn-red); transform: scale(1.03); }
-.contact-sep {
-  flex-shrink: 0;
-  color: var(--autumn-gold);
-  opacity: 0.4;
-  font-size: 0.7rem;
+.hotline-img {
+  display: block;
+  max-width: 190px;
+  height: auto;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
+.hotline-wrap:hover .hotline-img { transform: scale(1.03); }
 
 /* ==================== 装饰元素 ==================== */
 .leaf-deco {
@@ -998,8 +994,8 @@ img { display: block; max-width: 100%; }
     <div class="hero-content">
       <div class="hero-year">金秋·2026</div>
       <h1 class="hero-main"><span class="ch" style="transition-delay:.15s">高</span><span class="ch" style="transition-delay:.26s">铁</span><span class="ch" style="transition-delay:.37s">载</span><span class="ch" style="transition-delay:.48s">秋</span><span class="ch" style="transition-delay:.59s">意</span><br><span class="ch" style="transition-delay:.82s">赣</span><span class="ch" style="transition-delay:.93s">地</span><span class="ch" style="transition-delay:1.04s">揽</span><span class="ch" style="transition-delay:1.15s">风</span><span class="ch" style="transition-delay:1.26s">华</span></h1>
-      <div class="hero-subtitle">婺源·景德镇两日游行程攻略</div>
-      <p class="hero-org">2026年武汉局集团公司职工秋游全面开启！</p>
+      <img class="hero-subtitle-img" src="./image/hero-subtitle.png" alt="婺源·景德镇两日游行程攻略">
+      <img class="hero-org-img" src="./image/hero-org.png" alt="2026年武汉局集团公司职工秋游全面开启">
     </div>
     <div class="hero-company">武汉武铁旅服传媒有限责任公司</div>
     <div class="scroll-hint">
@@ -1348,11 +1344,9 @@ img { display: block; max-width: 100%; }
     <div class="footer-info">
       <div class="footer-contact">
         <div class="contact-label">武铁国旅服务热线</div>
-        <div class="contact-phones">
-          <a class="contact-phone" href="tel:027-88040915">027-88040915</a>
-          <span class="contact-sep">·</span>
-          <a class="contact-phone" href="tel:027-51169095">027-51169095</a>
-        </div>
+        <a class="hotline-wrap" href="tel:027-88040915">
+          <img class="hotline-img" src="./image/hotline.png" alt="027-88040915 / 027-51169095">
+        </a>
       </div>
       </div>
     <img class="footer-logo reveal" src="./image/logo.png" alt="武汉铁路国际旅行社有限公司">
