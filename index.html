@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -288,6 +288,22 @@ img { display: block; max-width: 100%; }
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   color: rgba(58,44,32,0.55);
+}
+.hero-company {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 100%;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: #4a3524;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(250,247,238,0.95), 0 0 20px rgba(250,247,238,0.7);
 }
 
 /* ==================== 诗页 ==================== */
@@ -688,10 +704,10 @@ img { display: block; max-width: 100%; }
 
 /* ==================== 页脚 ==================== */
 .footer {
-  background: var(--ink-dark);
-  color: rgba(245,239,224,0.6);
+  background: var(--rice-paper);
+  color: var(--ink-soft);
   text-align: center;
-  padding: 3rem 1.5rem 2rem;
+  padding: 3rem 1.5rem 2.5rem;
 }
 .footer-ending-img {
   display: block;
@@ -699,6 +715,13 @@ img { display: block; max-width: 100%; }
   max-width: 380px;
   height: auto;
   margin: 0.5rem auto 2rem;
+}
+.footer-logo {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin: 0.4rem auto 0;
 }
 .footer-info {
   font-size: 0.72rem;
@@ -710,15 +733,15 @@ img { display: block; max-width: 100%; }
 .footer-info .brand { color: var(--autumn-gold); font-size: 0.85rem; margin-bottom: 0.3rem; display: block; }
 .footer-staff {
   margin-top: 1.2rem;
-  font-size: 0.68rem;
-  color: rgba(245,239,224,0.42);
+  font-size: 0.82rem;
+  color: var(--tile-grey);
   letter-spacing: 0.08em;
   text-align: left;
 }
 
 /* ==================== 温馨提示 ==================== */
 .tips-card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(58,44,32,0.05);
   border-radius: 12px;
   padding: 1.3rem 1.4rem;
   border-left: 3px solid var(--autumn-gold);
@@ -739,7 +762,7 @@ img { display: block; max-width: 100%; }
 .tips-title::before { content: '※'; font-size: 0.85rem; }
 .tips-content {
   font-size: 0.82rem;
-  color: rgba(245,239,224,0.75);
+  color: var(--ink-soft);
   line-height: 2;
   text-align: justify;
   text-indent: 2em;
@@ -779,11 +802,16 @@ img { display: block; max-width: 100%; }
 
 /* ==================== 页脚联系电话 ==================== */
 .footer-contact {
+  display: inline-block;
   margin-top: 1rem;
+  padding: 0.9rem 1.8rem;
+  border: 1px solid rgba(184,147,74,0.5);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.45);
 }
 .contact-label {
   font-size: 0.78rem;
-  color: rgba(245,239,224,0.55);
+  color: var(--ink-soft);
   letter-spacing: 0.15em;
   margin-bottom: 0.7rem;
 }
@@ -796,12 +824,12 @@ img { display: block; max-width: 100%; }
 .contact-phone {
   font-family: var(--kai);
   font-size: 1.05rem;
-  color: var(--autumn-gold-light);
+  color: var(--autumn-gold);
   letter-spacing: 0.08em;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-.contact-phone:hover { color: var(--autumn-gold); }
+.contact-phone:hover { color: var(--autumn-red); }
 
 /* ==================== 装饰元素 ==================== */
 .leaf-deco {
@@ -944,6 +972,7 @@ img { display: block; max-width: 100%; }
       <div class="hero-subtitle">婺源·景德镇两日游行程攻略</div>
       <p class="hero-org">2026年武汉局集团公司职工秋游全面开启！</p>
     </div>
+    <div class="hero-company">武汉武铁旅服传媒有限责任公司</div>
     <div class="scroll-hint">
       <div class="scroll-mouse"></div>
       <div class="scroll-hint-text">向下滑动</div>
@@ -1256,7 +1285,7 @@ img { display: block; max-width: 100%; }
       <div class="tips-title">温馨提示</div>
       <div class="tips-content">本次婺源、景德镇两日游全程高铁出行，请各位职工合理安排出行时间，按时抵达集合地点。出行期间注意添减衣物，留意天气变化；游览途中遵守行程安排，注意人身及财物安全，文明游览。如遇问题可随时联系随团工作人员，预祝大家旅途愉快，收获秋日美好！</div>
     </div>
-    <img class="footer-ending-img reveal" src="./image/footer-slogan.png" alt="真诚服务，与您同行！">
+    <img class="footer-ending-img reveal" src="./image/footer-slogan.png" alt="武铁国旅，与您同行！">
     <div class="footer-info">
       <div class="footer-contact">
         <div class="contact-label">武铁国旅服务热线</div>
@@ -1267,6 +1296,7 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="footer-staff">编辑：韦子奇<br>审核：刘晚霞</div>
     </div>
+    <img class="footer-logo reveal" src="./image/logo.png" alt="武汉铁路国际旅行社有限公司">
   </footer>
 
 </div>
